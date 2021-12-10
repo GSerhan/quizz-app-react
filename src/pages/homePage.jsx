@@ -27,8 +27,6 @@ const HomePage = _ => {
           onChangeQuestion = {handleSelectedQuestion}
        />}
        </div>
-        
-      
     )
 }
 
