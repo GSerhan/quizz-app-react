@@ -1,5 +1,5 @@
 import { API_QUESTIONS_URL } from "../config/api";
-import { FETCH_QUESTIONS, UPDATE_INDEX_SELECTED_QUESTION, UPDATE_CORRECT_ANSWEARS, UPDATE_SELECTED_ANSWEAR } from "../types";
+import { FETCH_QUESTIONS, UPDATE_INDEX_SELECTED_QUESTION, UPDATE_CORRECT_ANSWERS, UPDATE_SELECTED_ANSWER } from "../types";
 
 export const getQuestions = () => async dispatch => {
     await fetch(API_QUESTIONS_URL)
@@ -30,17 +30,16 @@ export const updateSelectedQuestionIndex = value => {
     }
 }
 
-export const updateCorrectAnswears = value => (dispatch, getState) => {
+export const updateCorrectAnswers = value => (dispatch, getState) => {
     return {
-        type: UPDATE_CORRECT_ANSWEARS,
+        type: UPDATE_CORRECT_ANSWERS,
         payload: getState().appStore.correctAnswers.push(value)
     }
 }
 
-export const updateSelectedAnswear = value => {
-    console.log('value', value)
+export const updateSelectedAnswer = value => {
     return {
-        type: UPDATE_SELECTED_ANSWEAR,
+        type: UPDATE_SELECTED_ANSWER,
         payload: value
     }
 }

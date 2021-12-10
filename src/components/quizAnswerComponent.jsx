@@ -1,27 +1,29 @@
 
 import { useDispatch, useSelector } from 'react-redux';
-import { updateCorrectAnswears, updateSelectedAnswear } from '../actions/app'
-import { selectSelectedAnswear } from '../selectors/app';
+import { updateCorrectAnswers, updateSelectedAnswer } from '../actions/app'
+import { selectSelectedAnswer } from '../selectors/app';
 
 
 const QuizAnswerComponent = props => {
+
+    const answer = props.item;
     
     const dispatch = useDispatch();
-    const selectedAnswear = useSelector(state => selectSelectedAnswear(state));
+    const selectedAnswer = useSelector(state => selectSelectedAnswer(state));
 
-    const selectAnswear = (value) => {
-        if(Object.keys(selectedAnswear).length > 0) return
+    const selectAnswer = (value) => {
+        if(Object.keys(selectedAnswer).length > 0) return
         if(value.name === props.question.correct_answer) {
-            props.item.class = 'success';
-            dispatch(updateCorrectAnswears(props.question))
+            answer.class = 'success';
+            dispatch(updateCorrectAnswers(props.question))
         } else {
-            props.item.class = 'error';
+            answer.class = 'error';
         }
-        dispatch(updateSelectedAnswear(value));
+        dispatch(updateSelectedAnswer(value));
     }
     return (
-        <div onClick={() => selectAnswear(props.item)}>
-            <span className={props.item.class}>{props.item.name}</span>
+        <div onClick={() => selectAnswer(answer)}>
+            <span className={answer.class}>{answer.name}</span>
         </div>  
     )
 }

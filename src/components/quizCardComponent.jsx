@@ -1,12 +1,12 @@
 import '../css/quizCard.css';
 import QuizAnswerComponent from './quizAnswerComponent';
 import { useSelector } from 'react-redux';
-import { selectCorrectAnswers, selectSelectedAnswear } from '../selectors/app';
+import { selectCorrectAnswers, selectSelectedAnswer } from '../selectors/app';
 
 const QuizCardComponent = props => {
 
     const correctAnswers = useSelector(state => selectCorrectAnswers(state));
-    const selectedAnswear = useSelector(state => selectSelectedAnswear(state));
+    const selectedAnswer = useSelector(state => selectSelectedAnswer(state));
 
 
     return (
@@ -34,7 +34,7 @@ const QuizCardComponent = props => {
                             )}
                         </div>
                         <div className="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
-                            {Object.keys(selectedAnswear).length > 0 ? 
+                            {Object.keys(selectedAnswer).length > 0 ? 
                             <button className="btn btn-primary border-success align-items-center btn-success" 
                                 type="button" 
                                 onClick={() => props.onChangeQuestion()}

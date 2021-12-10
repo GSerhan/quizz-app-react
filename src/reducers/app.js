@@ -1,10 +1,10 @@
-import { FETCH_QUESTIONS, UPDATE_INDEX_SELECTED_QUESTION, UPDATE_CORRECT_ANSWEARS, UPDATE_SELECTED_ANSWEAR } from "../types"
+import { FETCH_QUESTIONS, UPDATE_INDEX_SELECTED_QUESTION, UPDATE_CORRECT_ANSWERS, UPDATE_SELECTED_ANSWER } from "../types"
 
 const initialState = {
     questions: [],
     selectedQuestionIndex: 0,
     correctAnswers: [],
-    selectedAnswear: {}
+    selectedAnswer: {}
 }
 
 export const quizReducer = (state = initialState, action) => {
@@ -14,7 +14,7 @@ export const quizReducer = (state = initialState, action) => {
                 ...state,
                 questions: action.payload
             }
-        case UPDATE_CORRECT_ANSWEARS:
+        case UPDATE_CORRECT_ANSWERS:
             return {
                 ...state,
                 correctAnswers: action.payload
@@ -24,10 +24,10 @@ export const quizReducer = (state = initialState, action) => {
                 ...state,
                 selectedQuestionIndex: action.payload
             }   
-        case UPDATE_SELECTED_ANSWEAR:
+        case UPDATE_SELECTED_ANSWER:
             return {
                 ...state,
-                selectedAnswear: action.payload
+                selectedAnswer: action.payload
             }            
         default:
             return state;     

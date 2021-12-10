@@ -15,6 +15,6 @@ export const selectCorrectAnswers = state => {
     return state.appStore.correctAnswers
 }
 
-export const selectSelectedAnswear = state => {
-    return state.appStore.selectedAnswear
+export const selectSelectedAnswer = state => {
+    return state.appStore.selectedAnswer
 }
