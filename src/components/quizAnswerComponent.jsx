@@ -6,7 +6,7 @@ import { selectSelectedAnswer } from '../selectors/app';
 
 const QuizAnswerComponent = props => {
 
-    const answer = props.item;
+    const {answer} = props;
     
     const dispatch = useDispatch();
     const selectedAnswer = useSelector(state => selectSelectedAnswer(state));
