@@ -1,19 +1,25 @@
 import QuizCardComponent from "../components/quizCardComponent"
-import { getQuestions, updateSelectedQuestionIndex, updateSelectedAnswer } from '../actions/app'
+import { getQuestions, updateSelectedQuestionIndex, updateSelectedAnswer, updateFinishModal } from '../actions/app'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedQuestion, setSelectedQuestionIndex, selectAllQuestions } from '../selectors/app';
+import { selectSelectedQuestion, selectSelectedQuestionIndex, selectAllQuestions, selectFinishModal } from '../selectors/app';
+import QuizFinishModalComponent from "../components/quizFinishModalComponent";
 
 const HomePage = _ => {
 
     const dispatch = useDispatch();
-    const selectedQuestion = useSelector(state => setSelectedQuestion(state));
-    const selectedQuestionIndex = useSelector(state => setSelectedQuestionIndex(state));
+    const selectedQuestion = useSelector(state => selectSelectedQuestion(state));
+    const selectedQuestionIndex = useSelector(state => selectSelectedQuestionIndex(state));
     const allQuestions = useSelector(state => selectAllQuestions(state));
+    const finishModal = useSelector(state => selectFinishModal(state));
 
     const handleSelectedQuestion = () => {
-      dispatch(updateSelectedQuestionIndex(selectedQuestionIndex + 1))
-      dispatch(updateSelectedAnswer(''));
+      if(selectedQuestionIndex === allQuestions.length - 1) {
+        dispatch(updateFinishModal(true));
+      } else {
+        dispatch(updateSelectedQuestionIndex(selectedQuestionIndex + 1))
+        dispatch(updateSelectedAnswer(''));
+      }
     }
 
     useEffect(() => {
@@ -22,11 +28,14 @@ const HomePage = _ => {
 
     return (
       <div>
-        {allQuestions.length && <QuizCardComponent
+        {allQuestions.length ? <QuizCardComponent
           question={selectedQuestion}
+          indexQuestion={selectedQuestionIndex}
+          allQuestions={allQuestions}
           onChangeQuestion = {handleSelectedQuestion}
-       />}
-       </div>
+       />: ''}
+       {finishModal && <QuizFinishModalComponent/>}
+      </div>
     )
 }
 

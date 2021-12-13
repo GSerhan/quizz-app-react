@@ -1,5 +1,5 @@
 import { API_QUESTIONS_URL } from "../config/api";
-import { FETCH_QUESTIONS, UPDATE_INDEX_SELECTED_QUESTION, UPDATE_CORRECT_ANSWERS, UPDATE_SELECTED_ANSWER } from "../types";
+import { FETCH_QUESTIONS, UPDATE_INDEX_SELECTED_QUESTION, UPDATE_CORRECT_ANSWERS, UPDATE_SELECTED_ANSWER, UPDATE_FINISH_MODAL } from "../types";
 
 export const getQuestions = () => async dispatch => {
     await fetch(API_QUESTIONS_URL)
@@ -8,6 +8,7 @@ export const getQuestions = () => async dispatch => {
             data.results.forEach(item => {
                 const newArray = [];
                 item.all_answers = [...item.incorrect_answers, item.correct_answer];
+                item.all_answers.sort(() => Math.random() - 0.5);
                 item.all_answers.forEach(element => {
                     newArray.push({
                         name: element,
@@ -40,6 +41,13 @@ export const updateCorrectAnswers = value => (dispatch, getState) => {
 export const updateSelectedAnswer = value => {
     return {
         type: UPDATE_SELECTED_ANSWER,
+        payload: value
+    }
+}
+
+export const updateFinishModal = value => {
+    return {
+        type: UPDATE_FINISH_MODAL,
         payload: value
     }
 }

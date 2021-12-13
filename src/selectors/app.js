@@ -1,9 +1,9 @@
-export const setSelectedQuestion = state => {
+export const selectSelectedQuestion = state => {
     if(!state.appStore.questions.length) return [];
     return state.appStore.questions.find((item, index) => index === state.appStore.selectedQuestionIndex);
 }
 
-export const setSelectedQuestionIndex = state => {
+export const selectSelectedQuestionIndex = state => {
     return state.appStore.selectedQuestionIndex;
 }
 
@@ -17,4 +17,9 @@ export const selectCorrectAnswers = state => {
 
 export const selectSelectedAnswer = state => {
     return state.appStore.selectedAnswer
+}
+
+
+export const selectFinishModal = state => {
+    return state.appStore.finishModal
 }

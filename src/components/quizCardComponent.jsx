@@ -38,7 +38,7 @@ const QuizCardComponent = props => {
                             <button className="btn btn-primary border-success align-items-center btn-success" 
                                 type="button" 
                                 onClick={() => props.onChangeQuestion()}
-                                >Next
+                                >{props.allQuestions.length - 1 === props.indexQuestion ? 'Finish' : 'Next'}
                                 <i className="fa fa-angle-right ml-2"></i>
                             </button>
                             : ''}
