@@ -22,9 +22,12 @@ const QuizAnswerComponent = props => {
         dispatch(updateSelectedAnswer(value));
     }
     return (
-        <div onClick={() => selectAnswer(answer)}>
-            <span className={answer.class}>{answer.name}</span>
-        </div>  
+       
+        <div className="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+            <div onClick={() => selectAnswer(answer)} className={"answer " + "answer--" + answer.class}>
+                {answer.name}
+            </div>
+        </div>
     )
 }
 

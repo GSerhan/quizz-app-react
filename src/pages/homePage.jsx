@@ -2,7 +2,7 @@ import QuizCardComponent from "../components/quizCardComponent"
 import { getQuestions, updateSelectedQuestionIndex, updateSelectedAnswer, updateFinishModal } from '../actions/app'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSelectedQuestion, selectSelectedQuestionIndex, selectAllQuestions, selectFinishModal } from '../selectors/app';
+import { selectSelectedQuestion, selectSelectedQuestionIndex, selectAllQuestions, selectFinishModal, selectCorrectAnswers } from '../selectors/app';
 import QuizFinishModalComponent from "../components/quizFinishModalComponent";
 
 const HomePage = _ => {
@@ -12,6 +12,7 @@ const HomePage = _ => {
     const selectedQuestionIndex = useSelector(state => selectSelectedQuestionIndex(state));
     const allQuestions = useSelector(state => selectAllQuestions(state));
     const finishModal = useSelector(state => selectFinishModal(state));
+    const correctQuestions = useSelector(state => selectCorrectAnswers(state));
 
     const handleSelectedQuestion = () => {
       if(selectedQuestionIndex === allQuestions.length - 1) {
@@ -34,7 +35,7 @@ const HomePage = _ => {
           allQuestions={allQuestions}
           onChangeQuestion = {handleSelectedQuestion}
        />: ''}
-       {finishModal && <QuizFinishModalComponent/>}
+       {finishModal && <QuizFinishModalComponent correctQuestionsCount={correctQuestions.length} allQuestionsCount={allQuestions.length}/>}
       </div>
     )
 }
