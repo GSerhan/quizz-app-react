@@ -99,11 +99,13 @@ body {
     background-color: #21bf73
 }
 
-.answer--success {
-    color: greenyellow;
+.answer--success, .answer--success:hover {
+    color: #333 !important;
+    background: greenyellow !important;
 }
-.answer--error {
-    color: red;
+.answer--error, .answer--error:hover {
+    color: #333 !important;
+    background: red !important;
 }
 
 .answer {

@@ -19,7 +19,6 @@ export const selectSelectedAnswer = state => {
     return state.appStore.selectedAnswer
 }
 
-
 export const selectFinishModal = state => {
     return state.appStore.finishModal
 }

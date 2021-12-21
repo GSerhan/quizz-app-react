@@ -16,7 +16,7 @@ const QuizFinishModalComponent = props => {
                     <p>You got: <strong>{correctQuestionsCount}</strong> out of <strong>{allQuestionsCount}</strong> questions right.</p>
                 </div>
                 <div>
-                    <button className='btn'>Restart</button>
+                    <button className='btn' onClick={() => props.onRestartQuiz()}>Restart</button>
                 </div>
             </div>
         </div>
