@@ -22,8 +22,8 @@ const QuizCardComponent = props => {
                             </div>
                         </div>
                         <div className="p-3 border-bottom">
-                            <div className="question ml-sm-5 pl-sm-5 pt-2">
-                                <h5 className="py-2 h5"><strong>Q.</strong> {question.question}</h5>
+                            <div className="question d-flex align-items-center ml-sm-5 pl-sm-5 pt-2">
+                                <h5 className="py-2 h5" dangerouslySetInnerHTML={{__html: question.question}}/>
                             </div>
                             {(question.all_answers || []).map((item, index) => 
                             <div key={index}>
