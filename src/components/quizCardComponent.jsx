@@ -8,7 +8,6 @@ const QuizCardComponent = props => {
     const correctAnswers = useSelector(state => selectCorrectAnswers(state));
     const selectedAnswer = useSelector(state => selectSelectedAnswer(state));
 
-
     const {question, allQuestions, indexQuestion} = props;
 
     return (
