@@ -1,5 +1,5 @@
 import { API_QUESTIONS_URL } from "../config/api";
-import { FETCH_QUESTIONS, UPDATE_INDEX_SELECTED_QUESTION, UPDATE_CORRECT_ANSWERS, UPDATE_SELECTED_ANSWER, UPDATE_FINISH_MODAL } from "../types";
+import { FETCH_QUESTIONS, UPDATE_INDEX_SELECTED_QUESTION, UPDATE_CORRECT_ANSWERS, UPDATE_SELECTED_ANSWER, UPDATE_FINISH_MODAL, RESTART_QUIZ } from "../types";
 
 export const getQuestions = () => async dispatch => {
     await fetch(API_QUESTIONS_URL)
@@ -49,5 +49,11 @@ export const updateFinishModal = value => {
     return {
         type: UPDATE_FINISH_MODAL,
         payload: value
+    }
+}
+
+export const restartQuiz = () => {
+    return {
+        type: RESTART_QUIZ
     }
 }

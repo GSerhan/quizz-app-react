@@ -4,12 +4,14 @@ import { useSelector } from 'react-redux';
 import { selectCorrectAnswers, selectSelectedAnswer } from '../selectors/app';
 
 const QuizCardComponent = props => {
-
+    const {question, allQuestions, indexQuestion} = props;
     const correctAnswers = useSelector(state => selectCorrectAnswers(state));
     const selectedAnswer = useSelector(state => selectSelectedAnswer(state));
 
     const {question, allQuestions, indexQuestion} = props;
 
+    const onSelectAnswerChild = (value) => props.onSelectAnswer(value)
+    
     return (
         <div className="container mt-5">
             <div className="d-flex justify-content-center row">
@@ -17,18 +19,18 @@ const QuizCardComponent = props => {
                     <div className="container mt-sm-5 my-1">
                         <div className="p-3 border-bottom">
                             <div className="d-flex flex-row justify-content-between align-items-center mcq">
-                                <h4>MCQ Quiz</h4><span>({correctAnswers.length})</span>
+                                <h4>MCQ Quiz</h4><span>({correctAnswers.length + '/' + allQuestions.length})</span>
                             </div>
                         </div>
                         <div className="p-3 border-bottom">
-                            <div className="question ml-sm-5 pl-sm-5 pt-2">
-                                <h5 className="py-2 h5"><strong>Q.</strong> {question.question}</h5>
+                            <div className="question d-flex align-items-center ml-sm-5 pl-sm-5 pt-2">
+                                <h5 className="py-2 h5" dangerouslySetInnerHTML={{__html: question.question}}/>
                             </div>
                             {(question.all_answers || []).map((item, index) => 
                             <div key={index}>
                                 <QuizAnswerComponent 
                                     answer={item} 
-                                    question={question}
+                                    onSelectAnswer={onSelectAnswerChild}
                                 />
                             </div>
                             )}
