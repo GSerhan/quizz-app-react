@@ -3,7 +3,6 @@ import QuizAnswerComponent from './quizAnswerComponent';
 import { useSelector } from 'react-redux';
 import { selectCorrectAnswers, selectSelectedAnswer } from '../selectors/app';
 
-
 const QuizCardComponent = props => {
     const {question, allQuestions, indexQuestion} = props;
     const correctAnswers = useSelector(state => selectCorrectAnswers(state));
